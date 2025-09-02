@@ -7,8 +7,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-RUN git clone --recurse-submodules https://github.com/egargale/forecasting.git /app && \
-    cd forecasting
+RUN git clone --recurse-submodules https://github.com/egargale/forecasting.git /app 
 
 RUN pip install -r requirements.txt
 RUN pip install --no-cache-dir runpod pandas
