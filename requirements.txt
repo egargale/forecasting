@@ -1,0 +1,5 @@
+# Install submodules in "editable" mode
+-e tirex
+-e chronos-forecasting
+pandas
+runpod
