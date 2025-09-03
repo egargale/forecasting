@@ -16,7 +16,9 @@ The service is optimized for serverless deployment and provides both point forec
 - **Quantile Forecasting**: Get uncertainty estimates with 10th, 50th, and 90th percentiles
 - **Serverless Ready**: Optimized for RunPod serverless deployment
 - **GPU Accelerated**: Leverages CUDA for fast inference
+- **CPU Fallback**: Automatic CPU detection and fallback when CUDA unavailable
 - **Production Ready**: Error handling, logging, and input validation
+- **Auto-Configuration**: Automatic CPU/CUDA detection with environment variable overrides
 
 ## Quick Start
 
@@ -27,7 +29,13 @@ The service is optimized for serverless deployment and provides both point forec
    pip install -r requirements.txt
    ```
 
-2. **Run Local Tests**
+2. **Test CPU/CUDA Configuration**
+   ```bash
+   # Check automatic CPU/CUDA detection
+   python test_cpu_config.py
+   ```
+
+3. **Run Local Tests**
    ```bash
    # Test with TiRex model
    python -c "import json; f=open('test_input.json'); print(json.load(f))"
@@ -36,7 +44,7 @@ The service is optimized for serverless deployment and provides both point forec
    python -c "import json; f=open('test_input_chronos.json'); print(json.load(f))"
    ```
 
-3. **Start Serverless Worker**
+4. **Start Serverless Worker**
    ```bash
    python rp_handler.py
    ```
@@ -67,6 +75,33 @@ The service accepts POST requests with the following JSON structure:
     "forecast": [11.2, 12.3, 13.1, 14.5, 15.2],
     "quantiles": [[10.1, 11.2, 12.3], [11.5, 12.3, 13.8], ...]
 }
+```
+
+## CPU/CUDA Configuration
+
+The service automatically detects CPU/CUDA availability and configures models accordingly:
+
+### Automatic Detection
+- **CUDA Available**: Uses GPU acceleration with `torch_dtype=torch.bfloat16`
+- **CUDA Unavailable**: Falls back to CPU with `torch_dtype=torch.float32`
+
+### Environment Variables
+Override automatic detection with these environment variables:
+
+| Variable | Values | Description |
+|----------|--------|-------------|
+| `USE_CPU` | `true`, `1`, `yes` | Force CPU mode regardless of CUDA availability |
+| `TIREX_NO_CUDA` | `1` | Disable TiRex CUDA kernels (set automatically in CPU mode) |
+
+### Examples
+```bash
+# Force CPU mode
+export USE_CPU=true
+python rp_handler.py
+
+# Use CUDA (default when available)
+unset USE_CPU
+python rp_handler.py
 ```
 
 ## Deployment
@@ -119,10 +154,12 @@ python rp_handler.py
 forecasting/
 ├── main.py                 # Simple entry point for local testing
 ├── rp_handler.py          # RunPod serverless handler
+├── test_cpu_config.py     # CPU/CUDA configuration test script
 ├── requirements.txt       # Python dependencies
 ├── pyproject.toml        # Project configuration
 ├── test_input.json       # Sample TiRex input
 ├── test_input_chronos.json  # Sample Chronos input
+├── test_input_tirex.json  # Sample TiRex input (alias)
 ├── chronos-forecasting/  # Chronos model submodule
 └── tirex/               # TiRex model submodule
 ```

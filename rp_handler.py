@@ -25,7 +25,7 @@ else:
 print("Loading models...")
 tirex_model = load_tirex_model("NX-AI/TiRex", device=device_str)
 chronos_pipeline = BaseChronosPipeline.from_pretrained(
-    "amazon/chronos-bolt-small",
+    "amazon/chronos-bolt-base",
     device_map=device_map,
     torch_dtype=torch_dtype,
 )
