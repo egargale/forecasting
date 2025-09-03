@@ -1,16 +1,33 @@
+import os
 import sys
 import runpod
 import torch
 from tirex import load_model as load_tirex_model
 from chronos import BaseChronosPipeline
 
+# Auto-detect CPU vs CUDA usage
+USE_CPU = not torch.cuda.is_available() or os.environ.get('USE_CPU', 'false').lower() in ('true', '1', 'yes')
+
+# Configure environment for CPU if needed
+if USE_CPU:
+    os.environ['TIREX_NO_CUDA'] = '1'
+    print("CPU mode detected - configuring for CPU-only usage")
+    device_str = "cpu"
+    torch_dtype = torch.float32
+    device_map = "cpu"
+else:
+    print("CUDA mode detected - using GPU acceleration")
+    device_str = "cuda:0"
+    torch_dtype = torch.bfloat16
+    device_map = "cuda"
+
 # Load models once when the worker starts
 print("Loading models...")
-tirex_model = load_tirex_model("NX-AI/TiRex")
+tirex_model = load_tirex_model("NX-AI/TiRex", device=device_str)
 chronos_pipeline = BaseChronosPipeline.from_pretrained(
     "amazon/chronos-bolt-small",
-    device_map="cuda",
-    torch_dtype=torch.bfloat16,
+    device_map=device_map,
+    torch_dtype=torch_dtype,
 )
 print("Models loaded successfully")
 
@@ -24,7 +41,7 @@ def handler(event):
     Returns:
         dict: The forecast result to be returned to the client
     """
-    print(f"Worker Start")
+    print("Worker Start")
     
     # Extract input data
     input_data = event['input']
