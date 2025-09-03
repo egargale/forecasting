@@ -205,3 +205,19 @@ forecasting/
 3. **Update Submodules**
    ```bash
    git submodule
+
+## Legal Disclaimer
+
+This project incorporates third-party models and software:
+
+### Chronos (amazon/chronos-bolt-small)
+- **License**: Apache License 2.0
+- **Source**: https://github.com/amazon-science/chronos-forecasting
+- **Copyright**: Amazon.com, Inc. or its affiliates
+
+### TiRex (NX-AI/TiRex)
+- **License**: Apache License 2.0
+- **Source**: https://github.com/NX-AI/tirex
+- **Copyright**: NX-AI GmbH
+
+This software is provided "as is" without warranty of any kind, express or implied. The authors and copyright holders are not liable for any claims, damages, or other liability arising from the use of this software.
