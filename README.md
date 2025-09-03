@@ -22,6 +22,29 @@ The service is optimized for serverless deployment and provides both point forec
 
 ## Quick Start
 
+### Docker Usage (Recommended)
+
+The fastest way to get started is using the pre-built Docker image from Docker Hub:
+
+```bash
+# Pull the latest image
+docker pull egargale/forecasting:latest
+
+# Run with GPU support (if CUDA is available)
+docker run --gpus all -p 8000:8000 egargale/forecasting:latest
+
+# Run with CPU only
+docker run -p 8000:8000 egargale/forecasting:latest
+
+# Run with custom environment variables
+docker run -e USE_CPU=true -p 8000:8000 egargale/forecasting:latest
+
+# Test the service
+curl -X POST http://localhost:8000/runsync \
+  -H "Content-Type: application/json" \
+  -d '{"input": {"model": "tirex", "context": [1,2,3,4,5,6,7,8,9,10], "prediction_length": 5}}'
+```
+
 ### Local Development
 
 1. **Install Dependencies**
