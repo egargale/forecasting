@@ -2,4 +2,3 @@
 -e tirex
 -e chronos-forecasting
 pandas
-runpod
