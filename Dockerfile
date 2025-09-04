@@ -1,15 +1,14 @@
-# FROM runpod/pytorch:0.7.0-cu1290-torch271-ubuntu2004
+# Use RunPod CUDA-enabled base image to resolve CUDA_HOME issues
+FROM runpod/base:0.7.0-cuda1290-ubuntu2404
+
 # Install uv
-FROM python:3.12-slim
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+# Set CUDA_HOME environment variable
+ENV CUDA_HOME=/usr/local/cuda
 
 # Change the working directory to the `app` directory
 WORKDIR /app
-
-# Install minimal system dependencies including git
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    git \
-    && rm -rf /var/lib/apt/lists/*
 
 # Install dependencies
 RUN --mount=type=cache,target=/root/.cache/uv \
@@ -24,11 +23,8 @@ ADD . /app
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --locked
 
-# RUN git clone --recurse-submodules https://github.com/egargale/forecasting.git /app 
-
+# Install additional requirements
 RUN uv pip install -r requirements.txt
-# RUN pip install --no-cache-dir runpod pandas
 
 # Start the container
-# CMD ["python", "-u", "rp_handler.py"]
 CMD ["uv", "run", "rp_handler.py"]
