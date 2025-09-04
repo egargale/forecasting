@@ -1,11 +1,11 @@
 # Use RunPod CUDA-enabled base image to resolve CUDA_HOME issues
-FROM runpod/base:0.7.0-cuda1290-ubuntu2404
+FROM runpod/base:0.7.0-cuda1281-ubuntu2404
 
 # Install uv
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+# COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 # Set CUDA_HOME environment variable
-ENV CUDA_HOME=/usr/local/cuda
+# ENV CUDA_HOME=/usr/local/cuda
 
 # Change the working directory to the `app` directory
 WORKDIR /app
