@@ -1,11 +1,9 @@
 # Use RunPod CUDA-enabled base image to resolve CUDA_HOME issues
-FROM runpod/base:0.7.0-cuda1281-ubuntu2404
+# FROM runpod/base:0.7.0-cuda1281-ubuntu2404
+FROM nvidia/cuda:13.0.0-cudnn-devel-ubuntu24.04
 
 # Install uv
-# COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
-
-# Set CUDA_HOME environment variable
-# ENV CUDA_HOME=/usr/local/cuda
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 # Change the working directory to the `app` directory
 WORKDIR /app
@@ -14,10 +12,10 @@ WORKDIR /app
 ADD . /app
 
 # Install additional requirements
-RUN pip install -r requirements.txt
+RUN uv pip install -r requirements.txt
 
 # Runpod SDK
-RUN pip install --no-cache-dir runpod
+RUN uv pip install --no-cache-dir runpod
 
 # Start the container
-CMD ["python3", "-u", "rp_handler.py"]
+CMD ["uv", "run", "rp_handler.py"]
