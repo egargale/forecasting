@@ -1,4 +1,4 @@
-FROM nvidia/cuda:13.0.0-cudnn-devel-ubuntu24.04
+FROM nvidia/cuda:12.9.0-cudnn-devel-ubuntu24.04
 
 # Install system dependencies including Python
 RUN apt-get update && apt-get install -y \
@@ -31,8 +31,8 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 # Install dependencies using pip
 RUN pip install --upgrade pip
-# Install PyTorch compatible with CUDA 13.0
-RUN pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
+# Install PyTorch compatible with CUDA 12.9
+RUN pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu129
 
 # Install requirements
 RUN pip install -r requirements.txt
