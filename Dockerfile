@@ -13,6 +13,8 @@ RUN apt-get update && apt-get install -y \
 # For Ampere GPUs (A100)
 ENV TORCH_CUDA_ARCH_LIST="8.0;8.6;9.0"
 ENV XLSTM_EXTRA_INCLUDE_PATHS='/usr/local/include/cuda/:/usr/include/cuda/'
+# Fix CUDA template linking issue by enabling relocatable device code
+ENV CUDA_NVCC_FLAGS="-rdc=true --expt-relaxed-constexpr"
 # Limit parallel compilation jobs
 ENV MAX_JOBS=4
 # Set CUDA Home
