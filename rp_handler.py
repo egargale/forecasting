@@ -33,6 +33,11 @@ if not USE_CPU:
     # Check if TORCH_CUDA_ARCH_LIST is set
     cuda_arch_list = os.environ.get('TORCH_CUDA_ARCH_LIST', 'not set')
     print(f"TORCH_CUDA_ARCH_LIST: {cuda_arch_list}")
+    
+    # Set compilation flags to fix template instantiation issues
+    # This addresses the -static-global-template-stub=true warning
+    os.environ['XLSTM_EXTRA_CUDA_CFLAGS'] = '-static-global-template-stub=false'
+    print("Set XLSTM_EXTRA_CUDA_CFLAGS to fix template instantiation")
 
 try:
     tirex_model = load_tirex_model("NX-AI/TiRex", device=device_str)
