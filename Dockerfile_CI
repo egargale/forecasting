@@ -8,7 +8,14 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     python3-venv \
     python3-full \
+    ninja-build \
     && rm -rf /var/lib/apt/lists/*
+
+# Set CUDA architecture to avoid compiling for all architectures
+# For Ampere GPUs (A100)
+ENV TORCH_CUDA_ARCH_LIST="8.0"
+# Limit parallel compilation jobs
+ENV MAX_JOBS=4
 
 # Set working directory
 WORKDIR /app
@@ -20,12 +27,16 @@ COPY . .
 RUN python3 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
-# Install dependencies using pip instead of uv
+# Install dependencies using pip
 RUN pip install --upgrade pip
+# Install PyTorch compatible with CUDA 13.0
+RUN pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
+
+# Install requirements
 RUN pip install -r requirements.txt
 
 # Install Runpod SDK
 RUN pip install --no-cache-dir runpod
 
 # Start the container
-CMD ["python3", "-u", "rp_handler.py"]
+CMD ["python3", "rp_handler.py"]
