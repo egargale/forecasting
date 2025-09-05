@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y \
 
 # Set CUDA architecture to avoid compiling for all architectures
 # For Ampere GPUs (A100)
-ENV TORCH_CUDA_ARCH_LIST="8.0;8.6"
+ENV TORCH_CUDA_ARCH_LIST="8.0;8.6;9.0"
+ENV XLSTM_EXTRA_INCLUDE_PATHS='/usr/local/include/cuda/:/usr/include/cuda/'
 # Limit parallel compilation jobs
 ENV MAX_JOBS=4
 # Set CUDA Home
