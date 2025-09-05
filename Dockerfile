@@ -1,30 +1,41 @@
-# Use RunPod CUDA-enabled base image to resolve CUDA_HOME issues
-FROM runpod/base:0.7.0-cuda1290-ubuntu2404
+FROM nvidia/cuda:13.0.0-cudnn-devel-ubuntu24.04
 
-# Install uv
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+# Install system dependencies including Python
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    python3-venv \
+    python3-full \
+    ninja-build \
+    && rm -rf /var/lib/apt/lists/*
 
-# Set CUDA_HOME environment variable
-ENV CUDA_HOME=/usr/local/cuda
-
-# Change the working directory to the `app` directory
+# Set CUDA architecture to avoid compiling for all architectures
+# For Ampere GPUs (A100)
+ENV TORCH_CUDA_ARCH_LIST="8.0;8.6"
+# Limit parallel compilation jobs
+ENV MAX_JOBS=4
+# Set CUDA Home
+ENV CUDA_HOME="/usr/local/cuda"
+# Set working directory
 WORKDIR /app
 
-# Install dependencies
-RUN --mount=type=cache,target=/root/.cache/uv \
-    --mount=type=bind,source=uv.lock,target=uv.lock \
-    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --locked --no-install-project
+# Copy the entire project first (including submodules)
+COPY . .
 
-# Copy the project into the image
-ADD . /app
+# Create a virtual environment and install dependencies
+RUN python3 -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
 
-# Sync the project
-RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --locked
+# Install dependencies using pip
+RUN pip install --upgrade pip
+# Install PyTorch compatible with CUDA 13.0
+RUN pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
 
-# Install additional requirements
-RUN uv pip install -r requirements.txt
+# Install requirements
+RUN pip install -r requirements.txt
+
+# Install Runpod SDK
+RUN pip install --no-cache-dir runpod
 
 # Start the container
-CMD ["uv", "run", "rp_handler.py"]
+CMD ["python3", "rp_handler.py"]

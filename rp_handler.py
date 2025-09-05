@@ -23,12 +23,42 @@ else:
 
 # Load models once when the worker starts
 print("Loading models...")
-tirex_model = load_tirex_model("NX-AI/TiRex", device=device_str)
-chronos_pipeline = BaseChronosPipeline.from_pretrained(
-    "amazon/chronos-bolt-base",
-    device_map=device_map,
-    torch_dtype=torch_dtype,
-)
+
+# Add diagnostic logging for CUDA compilation
+if not USE_CPU:
+    print("CUDA compilation diagnostics:")
+    print(f"CUDA available: {torch.cuda.is_available()}")
+    print(f"CUDA version: {torch.version.cuda}")
+    print(f"PyTorch version: {torch.__version__}")
+    # Check if TORCH_CUDA_ARCH_LIST is set
+    cuda_arch_list = os.environ.get('TORCH_CUDA_ARCH_LIST', 'not set')
+    print(f"TORCH_CUDA_ARCH_LIST: {cuda_arch_list}")
+
+try:
+    tirex_model = load_tirex_model("NX-AI/TiRex", device=device_str)
+    print("TiRex model loaded successfully")
+except Exception as e:
+    print(f"Error loading TiRex model: {str(e)}")
+    print("This may be due to CUDA compilation issues with sLSTM extension")
+    # Fall back to CPU if CUDA compilation fails
+    if not USE_CPU:
+        print("Attempting fallback to CPU mode...")
+        os.environ['TIREX_NO_CUDA'] = '1'
+        tirex_model = load_tirex_model("NX-AI/TiRex", device="cpu")
+    else:
+        raise
+
+try:
+    chronos_pipeline = BaseChronosPipeline.from_pretrained(
+        "amazon/chronos-bolt-base",
+        device_map=device_map,
+        torch_dtype=torch_dtype,
+    )
+    print("Chronos model loaded successfully")
+except Exception as e:
+    print(f"Error loading Chronos model: {str(e)}")
+    raise
+
 print("Models loaded successfully")
 
 def handler(event):

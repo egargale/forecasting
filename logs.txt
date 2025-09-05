@@ -1,0 +1,367 @@
+2025-09-05T10:43:00.666774307Z ==========
+2025-09-05T10:43:00.666782584Z == CUDA ==
+2025-09-05T10:43:00.666787417Z ==========
+2025-09-05T10:43:00.669805534Z CUDA Version 13.0.0
+2025-09-05T10:43:00.670778334Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-09-05T10:43:00.671591784Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-09-05T10:43:00.671595412Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-09-05T10:43:00.671597817Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-09-05T10:43:00.671602182Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-09-05T10:43:05.027235525Z font_manager.py     :1639 2025-09-05 10:43:05,027 generated new fontManager
+2025-09-05T10:43:08.083076796Z CUDA mode detected - using GPU acceleration
+2025-09-05T10:43:08.083131313Z Loading models...
+2025-09-05T10:43:20.055189664Z cuda_init.py        :114  2025-09-05 10:43:20,054 Before compilation and loading of slstm.
+2025-09-05T10:43:20.062641104Z W0905 10:43:20.062000 19 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation.
+2025-09-05T10:43:20.062686087Z W0905 10:43:20.062000 19 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+2025-09-05T10:43:20.063188422Z components.py       :146  2025-09-05 10:43:20,063 {'verbose': True, 'with_cuda': True, 'extra_ldflags': ['-L/usr/local/cuda/lib', '-lcublas'], 'extra_cflags': ['-DSLSTM_HIDDEN_SIZE=512', '-DSLSTM_BATCH_SIZE=8', '-DSLSTM_NUM_HEADS=4', '-DSLSTM_NUM_STATES=4', '-DSLSTM_DTYPE_B=float', '-DSLSTM_DTYPE_R=__nv_bfloat16', '-DSLSTM_DTYPE_W=__nv_bfloat16', '-DSLSTM_DTYPE_G=__nv_bfloat16', '-DSLSTM_DTYPE_S=__nv_bfloat16', '-DSLSTM_DTYPE_A=float', '-DSLSTM_NUM_GATES=4', '-DSLSTM_SIMPLE_AGG=true', '-DSLSTM_GRADIENT_RECURRENT_CLIPVAL_VALID=false', '-DSLSTM_GRADIENT_RECURRENT_CLIPVAL=0.0', '-DSLSTM_FORWARD_CLIPVAL_VALID=false', '-DSLSTM_FORWARD_CLIPVAL=0.0', '-U__CUDA_NO_HALF_OPERATORS__', '-U__CUDA_NO_HALF_CONVERSIONS__', '-U__CUDA_NO_BFLOAT16_OPERATORS__', '-U__CUDA_NO_BFLOAT16_CONVERSIONS__', '-U__CUDA_NO_BFLOAT162_OPERATORS__', '-U__CUDA_NO_BFLOAT162_CONVERSIONS__'], 'extra_cuda_cflags': ['-Xptxas="-v"', '-gencode', 'arch=compute_80,code=compute_80', '-res-usage', '--use_fast_math', '-O3', '-Xptxas -O3', '--extra-device-vectorization', '-DSLSTM_HIDDEN_SIZE=512', '-DSLSTM_BATCH_SIZE=8', '-DSLSTM_NUM_HEADS=4', '-DSLSTM_NUM_STATES=4', '-DSLSTM_DTYPE_B=float', '-DSLSTM_DTYPE_R=__nv_bfloat16', '-DSLSTM_DTYPE_W=__nv_bfloat16', '-DSLSTM_DTYPE_G=__nv_bfloat16', '-DSLSTM_DTYPE_S=__nv_bfloat16', '-DSLSTM_DTYPE_A=float', '-DSLSTM_NUM_GATES=4', '-DSLSTM_SIMPLE_AGG=true', '-DSLSTM_GRADIENT_RECURRENT_CLIPVAL_VALID=false', '-DSLSTM_GRADIENT_RECURRENT_CLIPVAL=0.0', '-DSLSTM_FORWARD_CLIPVAL_VALID=false', '-DSLSTM_FORWARD_CLIPVAL=0.0', '-U__CUDA_NO_HALF_OPERATORS__', '-U__CUDA_NO_HALF_CONVERSIONS__', '-U__CUDA_NO_BFLOAT16_OPERATORS__', '-U__CUDA_NO_BFLOAT16_CONVERSIONS__', '-U__CUDA_NO_BFLOAT162_OPERATORS__', '-U__CUDA_NO_BFLOAT162_CONVERSIONS__']}
+2025-09-05T10:43:21.321808037Z [1/8] /usr/local/cuda/bin/nvcc --generate-dependencies-with-compile --dependency-output cuda_error.cuda.o.d -DTORCH_EXTENSION_NAME=slstm_HS512BS8NH4NS4DBfDRbDWbDGbDSbDAfNG4SA1GRCV0GRC0d0FCV0FC0d0 -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1018\" -isystem /opt/venv/lib/python3.12/site-packages/torch/include -isystem /opt/venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_86,code=compute_86 -gencode=arch=compute_86,code=sm_86 --compiler-options '-fPIC' -Xptxas="-v" -gencode arch=compute_80,code=compute_80 -res-usage --use_fast_math -O3 -Xptxas -O3 --extra-device-vectorization -DSLSTM_HIDDEN_SIZE=512 -DSLSTM_BATCH_SIZE=8 -DSLSTM_NUM_HEADS=4 -DSLSTM_NUM_STATES=4 -DSLSTM_DTYPE_B=float -DSLSTM_DTYPE_R=__nv_bfloat16 -DSLSTM_DTYPE_W=__nv_bfloat16 -DSLSTM_DTYPE_G=__nv_bfloat16 -DSLSTM_DTYPE_S=__nv_bfloat16 -DSLSTM_DTYPE_A=float -DSLSTM_NUM_GATES=4 -DSLSTM_SIMPLE_AGG=true -DSLSTM_GRADIENT_RECURRENT_CLIPVAL_VALID=false -DSLSTM_GRADIENT_RECURRENT_CLIPVAL=0.0 -DSLSTM_FORWARD_CLIPVAL_VALID=false -DSLSTM_FORWARD_CLIPVAL=0.0 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_BFLOAT16_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ -U__CUDA_NO_BFLOAT162_OPERATORS__ -U__CUDA_NO_BFLOAT162_CONVERSIONS__ -std=c++17 -c /opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/src/util/cuda_error.cu -o cuda_error.cuda.o
+2025-09-05T10:43:21.321876466Z ptxas info    : 0 bytes gmem
+2025-09-05T10:43:22.323772765Z [2/8] /usr/local/cuda/bin/nvcc --generate-dependencies-with-compile --dependency-output slstm_forward.cuda.o.d -DTORCH_EXTENSION_NAME=slstm_HS512BS8NH4NS4DBfDRbDWbDGbDSbDAfNG4SA1GRCV0GRC0d0FCV0FC0d0 -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1018\" -isystem /opt/venv/lib/python3.12/site-packages/torch/include -isystem /opt/venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_86,code=compute_86 -gencode=arch=compute_86,code=sm_86 --compiler-options '-fPIC' -Xptxas="-v" -gencode arch=compute_80,code=compute_80 -res-usage --use_fast_math -O3 -Xptxas -O3 --extra-device-vectorization -DSLSTM_HIDDEN_SIZE=512 -DSLSTM_BATCH_SIZE=8 -DSLSTM_NUM_HEADS=4 -DSLSTM_NUM_STATES=4 -DSLSTM_DTYPE_B=float -DSLSTM_DTYPE_R=__nv_bfloat16 -DSLSTM_DTYPE_W=__nv_bfloat16 -DSLSTM_DTYPE_G=__nv_bfloat16 -DSLSTM_DTYPE_S=__nv_bfloat16 -DSLSTM_DTYPE_A=float -DSLSTM_NUM_GATES=4 -DSLSTM_SIMPLE_AGG=true -DSLSTM_GRADIENT_RECURRENT_CLIPVAL_VALID=false -DSLSTM_GRADIENT_RECURRENT_CLIPVAL=0.0 -DSLSTM_FORWARD_CLIPVAL_VALID=false -DSLSTM_FORWARD_CLIPVAL=0.0 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_BFLOAT16_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ -U__CUDA_NO_BFLOAT162_OPERATORS__ -U__CUDA_NO_BFLOAT162_CONVERSIONS__ -std=c++17 -c /opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/src/cuda/slstm_forward.cu -o slstm_forward.cuda.o
+2025-09-05T10:43:22.323808039Z /opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/src/cuda/slstm_pointwise.cuh(11): warning #20280-D: when "-static-global-template-stub=true" in whole program compilation mode ("-rdc=false"), a __global__ function template instantiation or specialization ("slstm::SLSTMPointwiseForward<(bool)1> ") must have a definition in the current translation unit. To resolve this issue, either use separate compilation mode ("-rdc=true"), or explicitly set "-static-global-template-stub=false" (but see nvcc documentation about downsides of turning it off)
+2025-09-05T10:43:22.323823484Z Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+2025-09-05T10:43:22.323833501Z /opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/src/cuda/slstm_pointwise.cuh(11): warning #20280-D: when "-static-global-template-stub=true" in whole program compilation mode ("-rdc=false"), a __global__ function template instantiation or specialization ("slstm::SLSTMPointwiseForward<(bool)0> ") must have a definition in the current translation unit. To resolve this issue, either use separate compilation mode ("-rdc=true"), or explicitly set "-static-global-template-stub=false" (but see nvcc documentation about downsides of turning it off)
+2025-09-05T10:43:22.323884754Z ptxas info    : 0 bytes gmem
+2025-09-05T10:43:22.323889954Z /opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/src/cuda/slstm_pointwise.cuh(11): warning #20280-D: when "-static-global-template-stub=true" in whole program compilation mode ("-rdc=false"), a __global__ function template instantiation or specialization ("slstm::SLSTMPointwiseForward<(bool)1> ") must have a definition in the current translation unit. To resolve this issue, either use separate compilation mode ("-rdc=true"), or explicitly set "-static-global-template-stub=false" (but see nvcc documentation about downsides of turning it off)
+2025-09-05T10:43:22.323904666Z Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+2025-09-05T10:43:22.323919936Z /opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/src/cuda/slstm_pointwise.cuh(11): warning #20280-D: when "-static-global-template-stub=true" in whole program compilation mode ("-rdc=false"), a __global__ function template instantiation or specialization ("slstm::SLSTMPointwiseForward<(bool)0> ") must have a definition in the current translation unit. To resolve this issue, either use separate compilation mode ("-rdc=true"), or explicitly set "-static-global-template-stub=false" (but see nvcc documentation about downsides of turning it off)
+2025-09-05T10:43:22.537381877Z [3/8] /usr/local/cuda/bin/nvcc --generate-dependencies-with-compile --dependency-output slstm_pointwise.cuda.o.d -DTORCH_EXTENSION_NAME=slstm_HS512BS8NH4NS4DBfDRbDWbDGbDSbDAfNG4SA1GRCV0GRC0d0FCV0FC0d0 -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1018\" -isystem /opt/venv/lib/python3.12/site-packages/torch/include -isystem /opt/venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_86,code=compute_86 -gencode=arch=compute_86,code=sm_86 --compiler-options '-fPIC' -Xptxas="-v" -gencode arch=compute_80,code=compute_80 -res-usage --use_fast_math -O3 -Xptxas -O3 --extra-device-vectorization -DSLSTM_HIDDEN_SIZE=512 -DSLSTM_BATCH_SIZE=8 -DSLSTM_NUM_HEADS=4 -DSLSTM_NUM_STATES=4 -DSLSTM_DTYPE_B=float -DSLSTM_DTYPE_R=__nv_bfloat16 -DSLSTM_DTYPE_W=__nv_bfloat16 -DSLSTM_DTYPE_G=__nv_bfloat16 -DSLSTM_DTYPE_S=__nv_bfloat16 -DSLSTM_DTYPE_A=float -DSLSTM_NUM_GATES=4 -DSLSTM_SIMPLE_AGG=true -DSLSTM_GRADIENT_RECURRENT_CLIPVAL_VALID=false -DSLSTM_GRADIENT_RECURRENT_CLIPVAL=0.0 -DSLSTM_FORWARD_CLIPVAL_VALID=false -DSLSTM_FORWARD_CLIPVAL=0.0 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_BFLOAT16_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ -U__CUDA_NO_BFLOAT162_OPERATORS__ -U__CUDA_NO_BFLOAT162_CONVERSIONS__ -std=c++17 -c /opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/src/cuda/slstm_pointwise.cu -o slstm_pointwise.cuda.o
+2025-09-05T10:43:22.537424149Z ptxas info    : 0 bytes gmem
+2025-09-05T10:43:22.537433242Z ptxas info    : Compiling entry function '_ZN5slstm21SLSTMPointwiseForwardILb0EEEviiiPK13__nv_bfloat16S3_PKfS3_jPS1_jS6_S6_' for 'sm_86'
+2025-09-05T10:43:22.537439246Z ptxas info    : Function properties for _ZN5slstm21SLSTMPointwiseForwardILb0EEEviiiPK13__nv_bfloat16S3_PKfS3_jPS1_jS6_S6_
+2025-09-05T10:43:22.537446619Z     0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+2025-09-05T10:43:22.537452239Z ptxas info    : Used 38 registers, used 0 barriers, 440 bytes cmem[0]
+2025-09-05T10:43:22.537457002Z ptxas info    : Compile time = 7.775 ms
+2025-09-05T10:43:22.537461985Z ptxas info    : Compiling entry function '_ZN5slstm21SLSTMPointwiseForwardILb1EEEviiiPK13__nv_bfloat16S3_PKfS3_jPS1_jS6_S6_' for 'sm_86'
+2025-09-05T10:43:22.537468046Z ptxas info    : Function properties for _ZN5slstm21SLSTMPointwiseForwardILb1EEEviiiPK13__nv_bfloat16S3_PKfS3_jPS1_jS6_S6_
+2025-09-05T10:43:22.537496906Z     0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+2025-09-05T10:43:22.537502904Z ptxas info    : Used 36 registers, used 0 barriers, 440 bytes cmem[0]
+2025-09-05T10:43:22.537508006Z ptxas info    : Compile time = 7.769 ms
+2025-09-05T10:43:22.537512656Z ptxas info    : Compiling entry function '_ZN5slstm22SLSTMPointwiseBackwardEiiiPK13__nv_bfloat16jS2_S2_PKfS2_jS2_jPS0_jS5_S5_S5_' for 'sm_86'
+2025-09-05T10:43:22.537517711Z ptxas info    : Function properties for _ZN5slstm22SLSTMPointwiseBackwardEiiiPK13__nv_bfloat16jS2_S2_PKfS2_jS2_jPS0_jS5_S5_S5_
+2025-09-05T10:43:22.537522928Z     0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+2025-09-05T10:43:22.537527674Z ptxas info    : Used 38 registers, used 0 barriers, 480 bytes cmem[0]
+2025-09-05T10:43:22.537532486Z ptxas info    : Compile time = 6.289 ms
+2025-09-05T10:43:22.707935186Z [4/8] /usr/local/cuda/bin/nvcc --generate-dependencies-with-compile --dependency-output slstm_backward_cut.cuda.o.d -DTORCH_EXTENSION_NAME=slstm_HS512BS8NH4NS4DBfDRbDWbDGbDSbDAfNG4SA1GRCV0GRC0d0FCV0FC0d0 -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1018\" -isystem /opt/venv/lib/python3.12/site-packages/torch/include -isystem /opt/venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_86,code=compute_86 -gencode=arch=compute_86,code=sm_86 --compiler-options '-fPIC' -Xptxas="-v" -gencode arch=compute_80,code=compute_80 -res-usage --use_fast_math -O3 -Xptxas -O3 --extra-device-vectorization -DSLSTM_HIDDEN_SIZE=512 -DSLSTM_BATCH_SIZE=8 -DSLSTM_NUM_HEADS=4 -DSLSTM_NUM_STATES=4 -DSLSTM_DTYPE_B=float -DSLSTM_DTYPE_R=__nv_bfloat16 -DSLSTM_DTYPE_W=__nv_bfloat16 -DSLSTM_DTYPE_G=__nv_bfloat16 -DSLSTM_DTYPE_S=__nv_bfloat16 -DSLSTM_DTYPE_A=float -DSLSTM_NUM_GATES=4 -DSLSTM_SIMPLE_AGG=true -DSLSTM_GRADIENT_RECURRENT_CLIPVAL_VALID=false -DSLSTM_GRADIENT_RECURRENT_CLIPVAL=0.0 -DSLSTM_FORWARD_CLIPVAL_VALID=false -DSLSTM_FORWARD_CLIPVAL=0.0 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_BFLOAT16_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ -U__CUDA_NO_BFLOAT162_OPERATORS__ -U__CUDA_NO_BFLOAT162_CONVERSIONS__ -std=c++17 -c /opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/src/cuda/slstm_backward_cut.cu -o slstm_backward_cut.cuda.o
+2025-09-05T10:43:22.707979647Z ptxas info    : 0 bytes gmem
+2025-09-05T10:43:22.707989267Z ptxas info    : Compiling entry function '_ZN54_GLOBAL__N__0809147d_21_slstm_backward_cut_cu_1c2c4d0129gradientBiasAggregationKernelEjjjjjjPK13__nv_bfloat16S2_Pf' for 'sm_86'
+2025-09-05T10:43:22.707999320Z ptxas info    : Function properties for _ZN54_GLOBAL__N__0809147d_21_slstm_backward_cut_cu_1c2c4d0129gradientBiasAggregationKernelEjjjjjjPK13__nv_bfloat16S2_Pf
+2025-09-05T10:43:22.708004823Z     0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+2025-09-05T10:43:22.708009856Z ptxas info    : Used 40 registers, used 0 barriers, 400 bytes cmem[0]
+2025-09-05T10:43:22.708015227Z ptxas info    : Compile time = 12.952 ms
+2025-09-05T10:43:22.780214535Z [5/8] /usr/local/cuda/bin/nvcc --generate-dependencies-with-compile --dependency-output slstm_backward.cuda.o.d -DTORCH_EXTENSION_NAME=slstm_HS512BS8NH4NS4DBfDRbDWbDGbDSbDAfNG4SA1GRCV0GRC0d0FCV0FC0d0 -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1018\" -isystem /opt/venv/lib/python3.12/site-packages/torch/include -isystem /opt/venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_86,code=compute_86 -gencode=arch=compute_86,code=sm_86 --compiler-options '-fPIC' -Xptxas="-v" -gencode arch=compute_80,code=compute_80 -res-usage --use_fast_math -O3 -Xptxas -O3 --extra-device-vectorization -DSLSTM_HIDDEN_SIZE=512 -DSLSTM_BATCH_SIZE=8 -DSLSTM_NUM_HEADS=4 -DSLSTM_NUM_STATES=4 -DSLSTM_DTYPE_B=float -DSLSTM_DTYPE_R=__nv_bfloat16 -DSLSTM_DTYPE_W=__nv_bfloat16 -DSLSTM_DTYPE_G=__nv_bfloat16 -DSLSTM_DTYPE_S=__nv_bfloat16 -DSLSTM_DTYPE_A=float -DSLSTM_NUM_GATES=4 -DSLSTM_SIMPLE_AGG=true -DSLSTM_GRADIENT_RECURRENT_CLIPVAL_VALID=false -DSLSTM_GRADIENT_RECURRENT_CLIPVAL=0.0 -DSLSTM_FORWARD_CLIPVAL_VALID=false -DSLSTM_FORWARD_CLIPVAL=0.0 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_BFLOAT16_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ -U__CUDA_NO_BFLOAT162_OPERATORS__ -U__CUDA_NO_BFLOAT162_CONVERSIONS__ -std=c++17 -c /opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/src/cuda/slstm_backward.cu -o slstm_backward.cuda.o
+2025-09-05T10:43:22.780263394Z ptxas info    : 0 bytes gmem
+2025-09-05T10:43:22.780269838Z ptxas info    : Compiling entry function '_ZN50_GLOBAL__N__87594eea_17_slstm_backward_cu_3639fa5e29gradientBiasAggregationKernelEjjjjjjPK13__nv_bfloat16S2_Pf' for 'sm_86'
+2025-09-05T10:43:22.780277701Z ptxas info    : Function properties for _ZN50_GLOBAL__N__87594eea_17_slstm_backward_cu_3639fa5e29gradientBiasAggregationKernelEjjjjjjPK13__nv_bfloat16S2_Pf
+2025-09-05T10:43:22.780282958Z     0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+2025-09-05T10:43:22.780288203Z ptxas info    : Used 40 registers, used 0 barriers, 400 bytes cmem[0]
+2025-09-05T10:43:22.780292998Z ptxas info    : Compile time = 12.974 ms
+2025-09-05T10:43:23.066979483Z [6/8] /usr/local/cuda/bin/nvcc --generate-dependencies-with-compile --dependency-output blas.cuda.o.d -DTORCH_EXTENSION_NAME=slstm_HS512BS8NH4NS4DBfDRbDWbDGbDSbDAfNG4SA1GRCV0GRC0d0FCV0FC0d0 -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1018\" -isystem /opt/venv/lib/python3.12/site-packages/torch/include -isystem /opt/venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_86,code=compute_86 -gencode=arch=compute_86,code=sm_86 --compiler-options '-fPIC' -Xptxas="-v" -gencode arch=compute_80,code=compute_80 -res-usage --use_fast_math -O3 -Xptxas -O3 --extra-device-vectorization -DSLSTM_HIDDEN_SIZE=512 -DSLSTM_BATCH_SIZE=8 -DSLSTM_NUM_HEADS=4 -DSLSTM_NUM_STATES=4 -DSLSTM_DTYPE_B=float -DSLSTM_DTYPE_R=__nv_bfloat16 -DSLSTM_DTYPE_W=__nv_bfloat16 -DSLSTM_DTYPE_G=__nv_bfloat16 -DSLSTM_DTYPE_S=__nv_bfloat16 -DSLSTM_DTYPE_A=float -DSLSTM_NUM_GATES=4 -DSLSTM_SIMPLE_AGG=true -DSLSTM_GRADIENT_RECURRENT_CLIPVAL_VALID=false -DSLSTM_GRADIENT_RECURRENT_CLIPVAL=0.0 -DSLSTM_FORWARD_CLIPVAL_VALID=false -DSLSTM_FORWARD_CLIPVAL=0.0 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_BFLOAT16_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ -U__CUDA_NO_BFLOAT162_OPERATORS__ -U__CUDA_NO_BFLOAT162_CONVERSIONS__ -std=c++17 -c /opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/src/util/blas.cu -o blas.cuda.o
+2025-09-05T10:43:23.067018144Z ptxas info    : 0 bytes gmem
+2025-09-05T10:43:23.067026974Z ptxas info    : Compiling entry function '_Z10initKernelI13__nv_bfloat16EvPT_iS1_' for 'sm_86'
+2025-09-05T10:43:23.067032800Z ptxas info    : Function properties for _Z10initKernelI13__nv_bfloat16EvPT_iS1_
+2025-09-05T10:43:23.067037570Z     0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+2025-09-05T10:43:23.067042057Z ptxas info    : Used 8 registers, used 0 barriers, 366 bytes cmem[0]
+2025-09-05T10:43:23.067046630Z ptxas info    : Compile time = 1.916 ms
+2025-09-05T10:43:23.067053277Z ptxas info    : Compiling entry function '_Z10initKernelI6__halfEvPT_iS1_' for 'sm_86'
+2025-09-05T10:43:23.067057700Z ptxas info    : Function properties for _Z10initKernelI6__halfEvPT_iS1_
+2025-09-05T10:43:23.067068304Z     0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+2025-09-05T10:43:23.067091629Z ptxas info    : Used 8 registers, used 0 barriers, 366 bytes cmem[0]
+2025-09-05T10:43:23.067141789Z ptxas info    : Compile time = 1.067 ms
+2025-09-05T10:43:23.067146572Z ptxas info    : Compiling entry function '_Z10initKernelIfEvPT_iS0_' for 'sm_86'
+2025-09-05T10:43:23.067151056Z ptxas info    : Function properties for _Z10initKernelIfEvPT_iS0_
+2025-09-05T10:43:23.067155476Z     0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+2025-09-05T10:43:23.067159876Z ptxas info    : Used 8 registers, used 0 barriers, 368 bytes cmem[0]
+2025-09-05T10:43:23.067164646Z ptxas info    : Compile time = 0.860 ms
+2025-09-05T10:43:23.067169129Z ptxas info    : Compiling entry function '_Z10initKernelIdEvPT_iS0_' for 'sm_86'
+2025-09-05T10:43:23.067196269Z ptxas info    : Function properties for _Z10initKernelIdEvPT_iS0_
+2025-09-05T10:43:23.067205243Z     0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+2025-09-05T10:43:23.067209756Z ptxas info    : Used 8 registers, used 0 barriers, 376 bytes cmem[0]
+2025-09-05T10:43:23.067216446Z ptxas info    : Compile time = 0.836 ms
+2025-09-05T10:43:32.690433452Z [7/8] c++ -MMD -MF slstm.o.d -DTORCH_EXTENSION_NAME=slstm_HS512BS8NH4NS4DBfDRbDWbDGbDSbDAfNG4SA1GRCV0GRC0d0FCV0FC0d0 -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1018\" -isystem /opt/venv/lib/python3.12/site-packages/torch/include -isystem /opt/venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -isystem /usr/local/cuda/include -isystem /usr/include/python3.12 -fPIC -std=c++17 -DSLSTM_HIDDEN_SIZE=512 -DSLSTM_BATCH_SIZE=8 -DSLSTM_NUM_HEADS=4 -DSLSTM_NUM_STATES=4 -DSLSTM_DTYPE_B=float -DSLSTM_DTYPE_R=__nv_bfloat16 -DSLSTM_DTYPE_W=__nv_bfloat16 -DSLSTM_DTYPE_G=__nv_bfloat16 -DSLSTM_DTYPE_S=__nv_bfloat16 -DSLSTM_DTYPE_A=float -DSLSTM_NUM_GATES=4 -DSLSTM_SIMPLE_AGG=true -DSLSTM_GRADIENT_RECURRENT_CLIPVAL_VALID=false -DSLSTM_GRADIENT_RECURRENT_CLIPVAL=0.0 -DSLSTM_FORWARD_CLIPVAL_VALID=false -DSLSTM_FORWARD_CLIPVAL=0.0 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_BFLOAT16_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ -U__CUDA_NO_BFLOAT162_OPERATORS__ -U__CUDA_NO_BFLOAT162_CONVERSIONS__ -c /opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/src/cuda/slstm.cc -o slstm.o
+2025-09-05T10:43:33.060619209Z [8/8] c++ slstm.o slstm_forward.cuda.o slstm_backward.cuda.o slstm_backward_cut.cuda.o slstm_pointwise.cuda.o blas.cuda.o cuda_error.cuda.o -shared -L/usr/local/cuda/lib -lcublas -L/opt/venv/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o slstm_HS512BS8NH4NS4DBfDRbDWbDGbDSbDAfNG4SA1GRCV0GRC0d0FCV0FC0d0.so
+2025-09-05T10:43:33.060665025Z FAILED: [code=1] slstm_HS512BS8NH4NS4DBfDRbDWbDGbDSbDAfNG4SA1GRCV0GRC0d0FCV0FC0d0.so
+2025-09-05T10:43:33.060672098Z c++ slstm.o slstm_forward.cuda.o slstm_backward.cuda.o slstm_backward_cut.cuda.o slstm_pointwise.cuda.o blas.cuda.o cuda_error.cuda.o -shared -L/usr/local/cuda/lib -lcublas -L/opt/venv/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o slstm_HS512BS8NH4NS4DBfDRbDWbDGbDSbDAfNG4SA1GRCV0GRC0d0FCV0FC0d0.so
+2025-09-05T10:43:33.060677480Z /usr/bin/ld: slstm_forward.cuda.o: in function `slstm::ForwardPass::IterateInternal(__nv_bfloat16 const*, __nv_bfloat16 const*, float const*, __nv_bfloat16 const*, unsigned int, __nv_bfloat16*, unsigned int, __nv_bfloat16*, __nv_bfloat16*, __nv_bfloat16*)':
+2025-09-05T10:43:33.060684462Z tmpxft_000000e8_00000000-6_slstm_forward.compute_80.cudafe1.cpp:(.text+0x3a8): undefined reference to `void slstm::SLSTMPointwiseForward<false>(int, int, int, __nv_bfloat16 const*, __nv_bfloat16 const*, float const*, __nv_bfloat16 const*, unsigned int, __nv_bfloat16*, unsigned int, __nv_bfloat16*, __nv_bfloat16*)'
+2025-09-05T10:43:33.060691005Z /usr/bin/ld: tmpxft_000000e8_00000000-6_slstm_forward.compute_80.cudafe1.cpp:(.text+0x4b1): undefined reference to `void slstm::SLSTMPointwiseForward<true>(int, int, int, __nv_bfloat16 const*, __nv_bfloat16 const*, float const*, __nv_bfloat16 const*, unsigned int, __nv_bfloat16*, unsigned int, __nv_bfloat16*, __nv_bfloat16*)'
+2025-09-05T10:43:33.060717242Z /usr/bin/ld: slstm_HS512BS8NH4NS4DBfDRbDWbDGbDSbDAfNG4SA1GRCV0GRC0d0FCV0FC0d0.so: hidden symbol `_ZN5slstm21SLSTMPointwiseForwardILb0EEEviiiPK13__nv_bfloat16S3_PKfS3_jPS1_jS6_S6_' isn't defined
+2025-09-05T10:43:33.060739565Z /usr/bin/ld: final link failed: bad value
+2025-09-05T10:43:33.060747569Z collect2: error: ld returned 1 exit status
+2025-09-05T10:43:33.060752335Z ninja: build stopped: subcommand failed.
+2025-09-05T10:43:33.061709707Z Traceback (most recent call last):
+2025-09-05T10:43:33.061756804Z   File "/opt/venv/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2595, in _run_ninja_build
+2025-09-05T10:43:33.063129401Z     subprocess.run(
+2025-09-05T10:43:33.063155669Z   File "/usr/lib/python3.12/subprocess.py", line 571, in run
+2025-09-05T10:43:33.063596278Z     raise CalledProcessError(retcode, process.args,
+2025-09-05T10:43:33.063638273Z subprocess.CalledProcessError: Command '['ninja', '-v']' returned non-zero exit status 1.
+2025-09-05T10:43:33.063649747Z The above exception was the direct cause of the following exception:
+2025-09-05T10:43:33.063659337Z Traceback (most recent call last):
+2025-09-05T10:43:33.063675417Z   File "/app/rp_handler.py", line 26, in <module>
+2025-09-05T10:43:33.063774725Z     tirex_model = load_tirex_model("NX-AI/TiRex", device=device_str)
+2025-09-05T10:43:33.064060047Z                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:33.064091637Z   File "/app/tirex/src/tirex/base.py", line 73, in load_model
+2025-09-05T10:43:33.064234901Z     return model_cls.from_pretrained(path, device=device, hf_kwargs=hf_kwargs, ckp_kwargs=ckp_kwargs)
+2025-09-05T10:43:33.064712489Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:33.064754867Z   File "/app/tirex/src/tirex/base.py", line 37, in from_pretrained
+2025-09-05T10:43:33.064874208Z     model = cls.load_from_checkpoint(checkpoint_path, map_location=device, **ckp_kwargs)
+2025-09-05T10:43:33.065161246Z             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:33.065209821Z   File "/opt/venv/lib/python3.12/site-packages/lightning/pytorch/utilities/model_helpers.py", line 125, in wrapper
+2025-09-05T10:43:33.065384654Z     return self.method(cls, *args, **kwargs)
+2025-09-05T10:43:33.065539173Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:33.065549023Z   File "/opt/venv/lib/python3.12/site-packages/lightning/pytorch/core/module.py", line 1662, in load_from_checkpoint
+2025-09-05T10:43:33.066295157Z     loaded = _load_from_checkpoint(
+2025-09-05T10:43:33.066380425Z              ^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:33.066433342Z   File "/opt/venv/lib/python3.12/site-packages/lightning/pytorch/core/saving.py", line 91, in _load_from_checkpoint
+2025-09-05T10:43:33.066551258Z     model = _load_state(cls, checkpoint, strict=strict, **kwargs)
+2025-09-05T10:43:33.066775119Z             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:33.066813869Z   File "/opt/venv/lib/python3.12/site-packages/lightning/pytorch/core/saving.py", line 165, in _load_state
+2025-09-05T10:43:33.066965195Z     obj = instantiator(cls, _cls_kwargs) if instantiator else cls(**_cls_kwargs)
+2025-09-05T10:43:33.067202449Z                                                               ^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:33.067223399Z   File "/app/tirex/src/tirex/models/tirex.py", line 39, in __init__
+2025-09-05T10:43:33.067343152Z     self.block_stack, resolved_config = self.init_block(self.model_config.block_kwargs)
+2025-09-05T10:43:33.067609427Z                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:33.067632307Z   File "/app/tirex/src/tirex/models/tirex.py", line 73, in init_block
+2025-09-05T10:43:33.067745506Z     model = xLSTMMixedLargeBlockStack(config)
+2025-09-05T10:43:33.067888381Z             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:33.067918374Z   File "/app/tirex/src/tirex/models/mixed_stack.py", line 106, in __init__
+2025-09-05T10:43:33.068051487Z     sLSTMBlock(config, block_idx=i, num_blocks=config.num_blocks) if t == "s" else mLSTMBlock(config)
+2025-09-05T10:43:33.068252936Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:33.068272125Z   File "/app/tirex/src/tirex/models/mixed_stack.py", line 58, in __init__
+2025-09-05T10:43:33.068390055Z     self.slstm_layer = init_cell(config, block_idx, num_blocks)
+2025-09-05T10:43:33.068591589Z                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:33.068631013Z   File "/app/tirex/src/tirex/models/mixed_stack.py", line 21, in init_cell
+2025-09-05T10:43:33.068727429Z     return sLSTMLayer(
+2025-09-05T10:43:33.068766787Z            ^^^^^^^^^^^
+2025-09-05T10:43:33.068822078Z   File "/opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/layer.py", line 78, in __init__
+2025-09-05T10:43:33.068933763Z     self.slstm_cell = sLSTMCell(self.config)
+2025-09-05T10:43:33.069073025Z                       ^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:33.069109356Z   File "/opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/cell.py", line 780, in __new__
+2025-09-05T10:43:33.069517066Z     return sLSTMCell_cuda(config, skip_backend_init=skip_backend_init)
+2025-09-05T10:43:33.069708052Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:33.069735052Z   File "/opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/cell.py", line 690, in __init__
+2025-09-05T10:43:33.070081862Z     self.func = sLSTMCellFuncGenerator(self.training, config)
+2025-09-05T10:43:33.070276283Z                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:33.070288177Z   File "/opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/cell.py", line 536, in sLSTMCellFuncGenerator
+2025-09-05T10:43:33.070599685Z     slstm_cuda = sLSTMCellCUDA.instance(config=config)
+2025-09-05T10:43:33.070761462Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:33.070808434Z   File "/opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/cell.py", line 515, in instance
+2025-09-05T10:43:33.071079954Z     cls.mod[repr(config)] = load(
+2025-09-05T10:43:33.071157724Z                             ^^^^^
+2025-09-05T10:43:33.071194151Z   File "/opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/src/cuda_init.py", line 115, in load
+2025-09-05T10:43:33.071309938Z     mod = _load(name + suffix, sources, **myargs)
+2025-09-05T10:43:33.071551681Z           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:33.071578308Z   File "/opt/venv/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 1681, in load
+2025-09-05T10:43:33.072331312Z     return _jit_compile(
+2025-09-05T10:43:33.072387215Z            ^^^^^^^^^^^^^
+2025-09-05T10:43:33.072429141Z   File "/opt/venv/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2138, in _jit_compile
+2025-09-05T10:43:33.073326210Z     _write_ninja_file_and_build_library(
+2025-09-05T10:43:33.073333315Z   File "/opt/venv/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2290, in _write_ninja_file_and_build_library
+2025-09-05T10:43:33.074300010Z     _run_ninja_build(
+2025-09-05T10:43:33.074314423Z   File "/opt/venv/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2612, in _run_ninja_build
+2025-09-05T10:43:33.075397199Z     raise RuntimeError(message) from e
+2025-09-05T10:43:33.075446579Z RuntimeError: Error building extension 'slstm_HS512BS8NH4NS4DBfDRbDWbDGbDSbDAfNG4SA1GRCV0GRC0d0FCV0FC0d0'
+2025-09-05T10:43:35.943442110Z ==========
+2025-09-05T10:43:35.943450142Z == CUDA ==
+2025-09-05T10:43:35.943518004Z ==========
+2025-09-05T10:43:35.945480883Z CUDA Version 13.0.0
+2025-09-05T10:43:35.946206964Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-09-05T10:43:35.946972240Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-09-05T10:43:35.946974190Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-09-05T10:43:35.946982696Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-09-05T10:43:35.946985898Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-09-05T10:43:43.251428849Z CUDA mode detected - using GPU acceleration
+2025-09-05T10:43:43.251470905Z Loading models...
+2025-09-05T10:43:53.221016561Z cuda_init.py        :114  2025-09-05 10:43:53,220 Before compilation and loading of slstm.
+2025-09-05T10:43:53.227312288Z W0905 10:43:53.226000 19 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation.
+2025-09-05T10:43:53.227369787Z W0905 10:43:53.226000 19 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+2025-09-05T10:43:53.227797421Z components.py       :146  2025-09-05 10:43:53,227 {'verbose': True, 'with_cuda': True, 'extra_ldflags': ['-L/usr/local/cuda/lib', '-lcublas'], 'extra_cflags': ['-DSLSTM_HIDDEN_SIZE=512', '-DSLSTM_BATCH_SIZE=8', '-DSLSTM_NUM_HEADS=4', '-DSLSTM_NUM_STATES=4', '-DSLSTM_DTYPE_B=float', '-DSLSTM_DTYPE_R=__nv_bfloat16', '-DSLSTM_DTYPE_W=__nv_bfloat16', '-DSLSTM_DTYPE_G=__nv_bfloat16', '-DSLSTM_DTYPE_S=__nv_bfloat16', '-DSLSTM_DTYPE_A=float', '-DSLSTM_NUM_GATES=4', '-DSLSTM_SIMPLE_AGG=true', '-DSLSTM_GRADIENT_RECURRENT_CLIPVAL_VALID=false', '-DSLSTM_GRADIENT_RECURRENT_CLIPVAL=0.0', '-DSLSTM_FORWARD_CLIPVAL_VALID=false', '-DSLSTM_FORWARD_CLIPVAL=0.0', '-U__CUDA_NO_HALF_OPERATORS__', '-U__CUDA_NO_HALF_CONVERSIONS__', '-U__CUDA_NO_BFLOAT16_OPERATORS__', '-U__CUDA_NO_BFLOAT16_CONVERSIONS__', '-U__CUDA_NO_BFLOAT162_OPERATORS__', '-U__CUDA_NO_BFLOAT162_CONVERSIONS__'], 'extra_cuda_cflags': ['-Xptxas="-v"', '-gencode', 'arch=compute_80,code=compute_80', '-res-usage', '--use_fast_math', '-O3', '-Xptxas -O3', '--extra-device-vectorization', '-DSLSTM_HIDDEN_SIZE=512', '-DSLSTM_BATCH_SIZE=8', '-DSLSTM_NUM_HEADS=4', '-DSLSTM_NUM_STATES=4', '-DSLSTM_DTYPE_B=float', '-DSLSTM_DTYPE_R=__nv_bfloat16', '-DSLSTM_DTYPE_W=__nv_bfloat16', '-DSLSTM_DTYPE_G=__nv_bfloat16', '-DSLSTM_DTYPE_S=__nv_bfloat16', '-DSLSTM_DTYPE_A=float', '-DSLSTM_NUM_GATES=4', '-DSLSTM_SIMPLE_AGG=true', '-DSLSTM_GRADIENT_RECURRENT_CLIPVAL_VALID=false', '-DSLSTM_GRADIENT_RECURRENT_CLIPVAL=0.0', '-DSLSTM_FORWARD_CLIPVAL_VALID=false', '-DSLSTM_FORWARD_CLIPVAL=0.0', '-U__CUDA_NO_HALF_OPERATORS__', '-U__CUDA_NO_HALF_CONVERSIONS__', '-U__CUDA_NO_BFLOAT16_OPERATORS__', '-U__CUDA_NO_BFLOAT16_CONVERSIONS__', '-U__CUDA_NO_BFLOAT162_OPERATORS__', '-U__CUDA_NO_BFLOAT162_CONVERSIONS__']}
+2025-09-05T10:43:53.601600733Z [1/1] c++ slstm.o slstm_forward.cuda.o slstm_backward.cuda.o slstm_backward_cut.cuda.o slstm_pointwise.cuda.o blas.cuda.o cuda_error.cuda.o -shared -L/usr/local/cuda/lib -lcublas -L/opt/venv/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o slstm_HS512BS8NH4NS4DBfDRbDWbDGbDSbDAfNG4SA1GRCV0GRC0d0FCV0FC0d0.so
+2025-09-05T10:43:53.601640346Z FAILED: [code=1] slstm_HS512BS8NH4NS4DBfDRbDWbDGbDSbDAfNG4SA1GRCV0GRC0d0FCV0FC0d0.so
+2025-09-05T10:43:53.601647100Z c++ slstm.o slstm_forward.cuda.o slstm_backward.cuda.o slstm_backward_cut.cuda.o slstm_pointwise.cuda.o blas.cuda.o cuda_error.cuda.o -shared -L/usr/local/cuda/lib -lcublas -L/opt/venv/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o slstm_HS512BS8NH4NS4DBfDRbDWbDGbDSbDAfNG4SA1GRCV0GRC0d0FCV0FC0d0.so
+2025-09-05T10:43:53.601652683Z /usr/bin/ld: slstm_forward.cuda.o: in function `slstm::ForwardPass::IterateInternal(__nv_bfloat16 const*, __nv_bfloat16 const*, float const*, __nv_bfloat16 const*, unsigned int, __nv_bfloat16*, unsigned int, __nv_bfloat16*, __nv_bfloat16*, __nv_bfloat16*)':
+2025-09-05T10:43:53.601659517Z tmpxft_000000e8_00000000-6_slstm_forward.compute_80.cudafe1.cpp:(.text+0x3a8): undefined reference to `void slstm::SLSTMPointwiseForward<false>(int, int, int, __nv_bfloat16 const*, __nv_bfloat16 const*, float const*, __nv_bfloat16 const*, unsigned int, __nv_bfloat16*, unsigned int, __nv_bfloat16*, __nv_bfloat16*)'
+2025-09-05T10:43:53.601679817Z /usr/bin/ld: tmpxft_000000e8_00000000-6_slstm_forward.compute_80.cudafe1.cpp:(.text+0x4b1): undefined reference to `void slstm::SLSTMPointwiseForward<true>(int, int, int, __nv_bfloat16 const*, __nv_bfloat16 const*, float const*, __nv_bfloat16 const*, unsigned int, __nv_bfloat16*, unsigned int, __nv_bfloat16*, __nv_bfloat16*)'
+2025-09-05T10:43:53.601685557Z /usr/bin/ld: slstm_HS512BS8NH4NS4DBfDRbDWbDGbDSbDAfNG4SA1GRCV0GRC0d0FCV0FC0d0.so: hidden symbol `_ZN5slstm21SLSTMPointwiseForwardILb0EEEviiiPK13__nv_bfloat16S3_PKfS3_jPS1_jS6_S6_' isn't defined
+2025-09-05T10:43:53.601690577Z /usr/bin/ld: final link failed: bad value
+2025-09-05T10:43:53.601697867Z collect2: error: ld returned 1 exit status
+2025-09-05T10:43:53.601738530Z ninja: build stopped: subcommand failed.
+2025-09-05T10:43:53.602472064Z Traceback (most recent call last):
+2025-09-05T10:43:53.602506817Z   File "/opt/venv/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2595, in _run_ninja_build
+2025-09-05T10:43:53.603890029Z     subprocess.run(
+2025-09-05T10:43:53.603926313Z   File "/usr/lib/python3.12/subprocess.py", line 571, in run
+2025-09-05T10:43:53.604247337Z     raise CalledProcessError(retcode, process.args,
+2025-09-05T10:43:53.604298400Z subprocess.CalledProcessError: Command '['ninja', '-v']' returned non-zero exit status 1.
+2025-09-05T10:43:53.604326722Z The above exception was the direct cause of the following exception:
+2025-09-05T10:43:53.604334632Z Traceback (most recent call last):
+2025-09-05T10:43:53.604368713Z   File "/app/rp_handler.py", line 26, in <module>
+2025-09-05T10:43:53.604428059Z     tirex_model = load_tirex_model("NX-AI/TiRex", device=device_str)
+2025-09-05T10:43:53.604704680Z                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:53.604732143Z   File "/app/tirex/src/tirex/base.py", line 73, in load_model
+2025-09-05T10:43:53.604995922Z     return model_cls.from_pretrained(path, device=device, hf_kwargs=hf_kwargs, ckp_kwargs=ckp_kwargs)
+2025-09-05T10:43:53.605217196Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:53.605246430Z   File "/app/tirex/src/tirex/base.py", line 37, in from_pretrained
+2025-09-05T10:43:53.605474799Z     model = cls.load_from_checkpoint(checkpoint_path, map_location=device, **ckp_kwargs)
+2025-09-05T10:43:53.605683150Z             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:53.605717833Z   File "/opt/venv/lib/python3.12/site-packages/lightning/pytorch/utilities/model_helpers.py", line 125, in wrapper
+2025-09-05T10:43:53.605827712Z     return self.method(cls, *args, **kwargs)
+2025-09-05T10:43:53.605990217Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:53.606008970Z   File "/opt/venv/lib/python3.12/site-packages/lightning/pytorch/core/module.py", line 1662, in load_from_checkpoint
+2025-09-05T10:43:53.606778839Z     loaded = _load_from_checkpoint(
+2025-09-05T10:43:53.606853658Z              ^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:53.606905026Z   File "/opt/venv/lib/python3.12/site-packages/lightning/pytorch/core/saving.py", line 91, in _load_from_checkpoint
+2025-09-05T10:43:53.607051007Z     model = _load_state(cls, checkpoint, strict=strict, **kwargs)
+2025-09-05T10:43:53.607242278Z             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:53.607288541Z   File "/opt/venv/lib/python3.12/site-packages/lightning/pytorch/core/saving.py", line 165, in _load_state
+2025-09-05T10:43:53.607459629Z     obj = instantiator(cls, _cls_kwargs) if instantiator else cls(**_cls_kwargs)
+2025-09-05T10:43:53.607693965Z                                                               ^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:53.607752394Z   File "/app/tirex/src/tirex/models/tirex.py", line 39, in __init__
+2025-09-05T10:43:53.607824470Z     self.block_stack, resolved_config = self.init_block(self.model_config.block_kwargs)
+2025-09-05T10:43:53.608105697Z                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:53.608117269Z   File "/app/tirex/src/tirex/models/tirex.py", line 73, in init_block
+2025-09-05T10:43:53.608251418Z     model = xLSTMMixedLargeBlockStack(config)
+2025-09-05T10:43:53.608415627Z             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:53.608452306Z   File "/app/tirex/src/tirex/models/mixed_stack.py", line 106, in __init__
+2025-09-05T10:43:53.608529411Z     sLSTMBlock(config, block_idx=i, num_blocks=config.num_blocks) if t == "s" else mLSTMBlock(config)
+2025-09-05T10:43:53.608743674Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:53.608779994Z   File "/app/tirex/src/tirex/models/mixed_stack.py", line 58, in __init__
+2025-09-05T10:43:53.608882106Z     self.slstm_layer = init_cell(config, block_idx, num_blocks)
+2025-09-05T10:43:53.609067712Z                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:53.609105786Z   File "/app/tirex/src/tirex/models/mixed_stack.py", line 21, in init_cell
+2025-09-05T10:43:53.609200816Z     return sLSTMLayer(
+2025-09-05T10:43:53.609244730Z            ^^^^^^^^^^^
+2025-09-05T10:43:53.609288806Z   File "/opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/layer.py", line 78, in __init__
+2025-09-05T10:43:53.609425895Z     self.slstm_cell = sLSTMCell(self.config)
+2025-09-05T10:43:53.609564288Z                       ^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:53.609607074Z   File "/opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/cell.py", line 780, in __new__
+2025-09-05T10:43:53.609977483Z     return sLSTMCell_cuda(config, skip_backend_init=skip_backend_init)
+2025-09-05T10:43:53.610202279Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:53.610212279Z   File "/opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/cell.py", line 690, in __init__
+2025-09-05T10:43:53.610574338Z     self.func = sLSTMCellFuncGenerator(self.training, config)
+2025-09-05T10:43:53.610761164Z                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:53.610800457Z   File "/opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/cell.py", line 536, in sLSTMCellFuncGenerator
+2025-09-05T10:43:53.611076675Z     slstm_cuda = sLSTMCellCUDA.instance(config=config)
+2025-09-05T10:43:53.611249705Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:53.611286988Z   File "/opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/cell.py", line 515, in instance
+2025-09-05T10:43:53.611552783Z     cls.mod[repr(config)] = load(
+2025-09-05T10:43:53.611632111Z                             ^^^^^
+2025-09-05T10:43:53.611684848Z   File "/opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/src/cuda_init.py", line 115, in load
+2025-09-05T10:43:53.611793520Z     mod = _load(name + suffix, sources, **myargs)
+2025-09-05T10:43:53.611966009Z           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:43:53.611999953Z   File "/opt/venv/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 1681, in load
+2025-09-05T10:43:53.612738270Z     return _jit_compile(
+2025-09-05T10:43:53.612787985Z            ^^^^^^^^^^^^^
+2025-09-05T10:43:53.612830146Z   File "/opt/venv/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2138, in _jit_compile
+2025-09-05T10:43:53.613708443Z     _write_ninja_file_and_build_library(
+2025-09-05T10:43:53.613723980Z   File "/opt/venv/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2290, in _write_ninja_file_and_build_library
+2025-09-05T10:43:53.614673653Z     _run_ninja_build(
+2025-09-05T10:43:53.614686560Z   File "/opt/venv/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2612, in _run_ninja_build
+2025-09-05T10:43:53.615739050Z     raise RuntimeError(message) from e
+2025-09-05T10:43:53.615802991Z RuntimeError: Error building extension 'slstm_HS512BS8NH4NS4DBfDRbDWbDGbDSbDAfNG4SA1GRCV0GRC0d0FCV0FC0d0'
+2025-09-05T10:44:04.103205754Z ==========
+2025-09-05T10:44:04.103225930Z == CUDA ==
+2025-09-05T10:44:04.103287156Z ==========
+2025-09-05T10:44:04.106038358Z CUDA Version 13.0.0
+2025-09-05T10:44:04.107280601Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-09-05T10:44:04.108046072Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-09-05T10:44:04.108048926Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-09-05T10:44:04.108050910Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-09-05T10:44:04.108053973Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-09-05T10:44:10.586215235Z CUDA mode detected - using GPU acceleration
+2025-09-05T10:44:10.586260777Z Loading models...
+2025-09-05T10:44:12.881962996Z cuda_init.py        :114  2025-09-05 10:44:12,881 Before compilation and loading of slstm.
+2025-09-05T10:44:12.888433352Z W0905 10:44:12.887000 18 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation.
+2025-09-05T10:44:12.888453565Z W0905 10:44:12.887000 18 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+2025-09-05T10:44:12.888875462Z components.py       :146  2025-09-05 10:44:12,888 {'verbose': True, 'with_cuda': True, 'extra_ldflags': ['-L/usr/local/cuda/lib', '-lcublas'], 'extra_cflags': ['-DSLSTM_HIDDEN_SIZE=512', '-DSLSTM_BATCH_SIZE=8', '-DSLSTM_NUM_HEADS=4', '-DSLSTM_NUM_STATES=4', '-DSLSTM_DTYPE_B=float', '-DSLSTM_DTYPE_R=__nv_bfloat16', '-DSLSTM_DTYPE_W=__nv_bfloat16', '-DSLSTM_DTYPE_G=__nv_bfloat16', '-DSLSTM_DTYPE_S=__nv_bfloat16', '-DSLSTM_DTYPE_A=float', '-DSLSTM_NUM_GATES=4', '-DSLSTM_SIMPLE_AGG=true', '-DSLSTM_GRADIENT_RECURRENT_CLIPVAL_VALID=false', '-DSLSTM_GRADIENT_RECURRENT_CLIPVAL=0.0', '-DSLSTM_FORWARD_CLIPVAL_VALID=false', '-DSLSTM_FORWARD_CLIPVAL=0.0', '-U__CUDA_NO_HALF_OPERATORS__', '-U__CUDA_NO_HALF_CONVERSIONS__', '-U__CUDA_NO_BFLOAT16_OPERATORS__', '-U__CUDA_NO_BFLOAT16_CONVERSIONS__', '-U__CUDA_NO_BFLOAT162_OPERATORS__', '-U__CUDA_NO_BFLOAT162_CONVERSIONS__'], 'extra_cuda_cflags': ['-Xptxas="-v"', '-gencode', 'arch=compute_80,code=compute_80', '-res-usage', '--use_fast_math', '-O3', '-Xptxas -O3', '--extra-device-vectorization', '-DSLSTM_HIDDEN_SIZE=512', '-DSLSTM_BATCH_SIZE=8', '-DSLSTM_NUM_HEADS=4', '-DSLSTM_NUM_STATES=4', '-DSLSTM_DTYPE_B=float', '-DSLSTM_DTYPE_R=__nv_bfloat16', '-DSLSTM_DTYPE_W=__nv_bfloat16', '-DSLSTM_DTYPE_G=__nv_bfloat16', '-DSLSTM_DTYPE_S=__nv_bfloat16', '-DSLSTM_DTYPE_A=float', '-DSLSTM_NUM_GATES=4', '-DSLSTM_SIMPLE_AGG=true', '-DSLSTM_GRADIENT_RECURRENT_CLIPVAL_VALID=false', '-DSLSTM_GRADIENT_RECURRENT_CLIPVAL=0.0', '-DSLSTM_FORWARD_CLIPVAL_VALID=false', '-DSLSTM_FORWARD_CLIPVAL=0.0', '-U__CUDA_NO_HALF_OPERATORS__', '-U__CUDA_NO_HALF_CONVERSIONS__', '-U__CUDA_NO_BFLOAT16_OPERATORS__', '-U__CUDA_NO_BFLOAT16_CONVERSIONS__', '-U__CUDA_NO_BFLOAT162_OPERATORS__', '-U__CUDA_NO_BFLOAT162_CONVERSIONS__']}
+2025-09-05T10:44:13.252248252Z [1/1] c++ slstm.o slstm_forward.cuda.o slstm_backward.cuda.o slstm_backward_cut.cuda.o slstm_pointwise.cuda.o blas.cuda.o cuda_error.cuda.o -shared -L/usr/local/cuda/lib -lcublas -L/opt/venv/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o slstm_HS512BS8NH4NS4DBfDRbDWbDGbDSbDAfNG4SA1GRCV0GRC0d0FCV0FC0d0.so
+2025-09-05T10:44:13.252289689Z FAILED: [code=1] slstm_HS512BS8NH4NS4DBfDRbDWbDGbDSbDAfNG4SA1GRCV0GRC0d0FCV0FC0d0.so
+2025-09-05T10:44:13.252298379Z c++ slstm.o slstm_forward.cuda.o slstm_backward.cuda.o slstm_backward_cut.cuda.o slstm_pointwise.cuda.o blas.cuda.o cuda_error.cuda.o -shared -L/usr/local/cuda/lib -lcublas -L/opt/venv/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/usr/local/cuda/lib64 -lcudart -o slstm_HS512BS8NH4NS4DBfDRbDWbDGbDSbDAfNG4SA1GRCV0GRC0d0FCV0FC0d0.so
+2025-09-05T10:44:13.252319536Z /usr/bin/ld: slstm_forward.cuda.o: in function `slstm::ForwardPass::IterateInternal(__nv_bfloat16 const*, __nv_bfloat16 const*, float const*, __nv_bfloat16 const*, unsigned int, __nv_bfloat16*, unsigned int, __nv_bfloat16*, __nv_bfloat16*, __nv_bfloat16*)':
+2025-09-05T10:44:13.252331561Z tmpxft_000000e8_00000000-6_slstm_forward.compute_80.cudafe1.cpp:(.text+0x3a8): undefined reference to `void slstm::SLSTMPointwiseForward<false>(int, int, int, __nv_bfloat16 const*, __nv_bfloat16 const*, float const*, __nv_bfloat16 const*, unsigned int, __nv_bfloat16*, unsigned int, __nv_bfloat16*, __nv_bfloat16*)'
+2025-09-05T10:44:13.252337253Z /usr/bin/ld: tmpxft_000000e8_00000000-6_slstm_forward.compute_80.cudafe1.cpp:(.text+0x4b1): undefined reference to `void slstm::SLSTMPointwiseForward<true>(int, int, int, __nv_bfloat16 const*, __nv_bfloat16 const*, float const*, __nv_bfloat16 const*, unsigned int, __nv_bfloat16*, unsigned int, __nv_bfloat16*, __nv_bfloat16*)'
+2025-09-05T10:44:13.252342475Z /usr/bin/ld: slstm_HS512BS8NH4NS4DBfDRbDWbDGbDSbDAfNG4SA1GRCV0GRC0d0FCV0FC0d0.so: hidden symbol `_ZN5slstm21SLSTMPointwiseForwardILb0EEEviiiPK13__nv_bfloat16S3_PKfS3_jPS1_jS6_S6_' isn't defined
+2025-09-05T10:44:13.252360632Z /usr/bin/ld: final link failed: bad value
+2025-09-05T10:44:13.252367328Z collect2: error: ld returned 1 exit status
+2025-09-05T10:44:13.252372305Z ninja: build stopped: subcommand failed.
+2025-09-05T10:44:13.253171976Z Traceback (most recent call last):
+2025-09-05T10:44:13.253183159Z   File "/opt/venv/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2595, in _run_ninja_build
+2025-09-05T10:44:13.254673028Z     subprocess.run(
+2025-09-05T10:44:13.254712713Z   File "/usr/lib/python3.12/subprocess.py", line 571, in run
+2025-09-05T10:44:13.255088205Z     raise CalledProcessError(retcode, process.args,
+2025-09-05T10:44:13.255125572Z subprocess.CalledProcessError: Command '['ninja', '-v']' returned non-zero exit status 1.
+2025-09-05T10:44:13.255143584Z The above exception was the direct cause of the following exception:
+2025-09-05T10:44:13.255157092Z Traceback (most recent call last):
+2025-09-05T10:44:13.255164944Z   File "/app/rp_handler.py", line 26, in <module>
+2025-09-05T10:44:13.255288023Z     tirex_model = load_tirex_model("NX-AI/TiRex", device=device_str)
+2025-09-05T10:44:13.255575755Z                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:44:13.255615698Z   File "/app/tirex/src/tirex/base.py", line 73, in load_model
+2025-09-05T10:44:13.255756260Z     return model_cls.from_pretrained(path, device=device, hf_kwargs=hf_kwargs, ckp_kwargs=ckp_kwargs)
+2025-09-05T10:44:13.256118347Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:44:13.256151384Z   File "/app/tirex/src/tirex/base.py", line 37, in from_pretrained
+2025-09-05T10:44:13.256249782Z     model = cls.load_from_checkpoint(checkpoint_path, map_location=device, **ckp_kwargs)
+2025-09-05T10:44:13.256629920Z             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:44:13.256662340Z   File "/opt/venv/lib/python3.12/site-packages/lightning/pytorch/utilities/model_helpers.py", line 125, in wrapper
+2025-09-05T10:44:13.256860399Z     return self.method(cls, *args, **kwargs)
+2025-09-05T10:44:13.257016953Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:44:13.257045850Z   File "/opt/venv/lib/python3.12/site-packages/lightning/pytorch/core/module.py", line 1662, in load_from_checkpoint
+2025-09-05T10:44:13.257902854Z     loaded = _load_from_checkpoint(
+2025-09-05T10:44:13.257998296Z              ^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:44:13.258023288Z   File "/opt/venv/lib/python3.12/site-packages/lightning/pytorch/core/saving.py", line 91, in _load_from_checkpoint
+2025-09-05T10:44:13.258179477Z     model = _load_state(cls, checkpoint, strict=strict, **kwargs)
+2025-09-05T10:44:13.258459572Z             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:44:13.258504986Z   File "/opt/venv/lib/python3.12/site-packages/lightning/pytorch/core/saving.py", line 165, in _load_state
+2025-09-05T10:44:13.258670645Z     obj = instantiator(cls, _cls_kwargs) if instantiator else cls(**_cls_kwargs)
+2025-09-05T10:44:13.258922000Z                                                               ^^^^^^^^^^^^^^^^^^
+2025-09-05T10:44:13.258956836Z   File "/app/tirex/src/tirex/models/tirex.py", line 39, in __init__
+2025-09-05T10:44:13.259076041Z     self.block_stack, resolved_config = self.init_block(self.model_config.block_kwargs)
+2025-09-05T10:44:13.259358226Z                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:44:13.259476842Z   File "/app/tirex/src/tirex/models/tirex.py", line 73, in init_block
+2025-09-05T10:44:13.259523392Z     model = xLSTMMixedLargeBlockStack(config)
+2025-09-05T10:44:13.259666658Z             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:44:13.259709406Z   File "/app/tirex/src/tirex/models/mixed_stack.py", line 106, in __init__
+2025-09-05T10:44:13.259843525Z     sLSTMBlock(config, block_idx=i, num_blocks=config.num_blocks) if t == "s" else mLSTMBlock(config)
+2025-09-05T10:44:13.260073950Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:44:13.260089944Z   File "/app/tirex/src/tirex/models/mixed_stack.py", line 58, in __init__
+2025-09-05T10:44:13.260203336Z     self.slstm_layer = init_cell(config, block_idx, num_blocks)
+2025-09-05T10:44:13.260432875Z                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:44:13.260462949Z   File "/app/tirex/src/tirex/models/mixed_stack.py", line 21, in init_cell
+2025-09-05T10:44:13.260585454Z     return sLSTMLayer(
+2025-09-05T10:44:13.260625210Z            ^^^^^^^^^^^
+2025-09-05T10:44:13.260669160Z   File "/opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/layer.py", line 78, in __init__
+2025-09-05T10:44:13.260821775Z     self.slstm_cell = sLSTMCell(self.config)
+2025-09-05T10:44:13.260966906Z                       ^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:44:13.260991426Z   File "/opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/cell.py", line 780, in __new__
+2025-09-05T10:44:13.261434884Z     return sLSTMCell_cuda(config, skip_backend_init=skip_backend_init)
+2025-09-05T10:44:13.261663748Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:44:13.261689715Z   File "/opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/cell.py", line 690, in __init__
+2025-09-05T10:44:13.262059545Z     self.func = sLSTMCellFuncGenerator(self.training, config)
+2025-09-05T10:44:13.262268642Z                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:44:13.262299782Z   File "/opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/cell.py", line 536, in sLSTMCellFuncGenerator
+2025-09-05T10:44:13.262608331Z     slstm_cuda = sLSTMCellCUDA.instance(config=config)
+2025-09-05T10:44:13.262806794Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:44:13.262838690Z   File "/opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/cell.py", line 515, in instance
+2025-09-05T10:44:13.263144860Z     cls.mod[repr(config)] = load(
+2025-09-05T10:44:13.263218431Z                             ^^^^^
+2025-09-05T10:44:13.263250151Z   File "/opt/venv/lib/python3.12/site-packages/xlstm/blocks/slstm/src/cuda_init.py", line 115, in load
+2025-09-05T10:44:13.263403155Z     mod = _load(name + suffix, sources, **myargs)
+2025-09-05T10:44:13.263594927Z           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-05T10:44:13.263647716Z   File "/opt/venv/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 1681, in load
+2025-09-05T10:44:13.264484857Z     return _jit_compile(
+2025-09-05T10:44:13.264522600Z            ^^^^^^^^^^^^^
+2025-09-05T10:44:13.264588461Z   File "/opt/venv/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2138, in _jit_compile
+2025-09-05T10:44:13.265553342Z     _write_ninja_file_and_build_library(
+2025-09-05T10:44:13.265574819Z   File "/opt/venv/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2290, in _write_ninja_file_and_build_library
+2025-09-05T10:44:13.266652114Z     _run_ninja_build(
+2025-09-05T10:44:13.266669845Z   File "/opt/venv/lib/python3.12/site-packages/torch/utils/cpp_extension.py", line 2612, in _run_ninja_build
+2025-09-05T10:44:13.267864979Z     raise RuntimeError(message) from e
+2025-09-05T10:44:13.267940311Z RuntimeError: Error building extension 'slstm_HS512BS8NH4NS4DBfDRbDWbDGbDSbDAfNG4SA1GRCV0GRC0d0FCV0FC0d0'
+2025-09-05T10:44:25.244893188Z ==========
+2025-09-05T10:44:25.244897812Z == CUDA ==
+2025-09-05T10:44:25.244903092Z ==========
+2025-09-05T10:44:25.248328275Z CUDA Version 13.0.0
+2025-09-05T10:44:25.249004380Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-09-05T10:44:25.249731679Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-09-05T10:44:25.249736027Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-09-05T10:44:25.249739577Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-09-05T10:44:25.249751306Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-09-05T10:44:32.486470391Z CUDA mode detected - using GPU acceleration
+2025-09-05T10:44:32.486512052Z Loading models...
